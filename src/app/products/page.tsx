@@ -2,6 +2,8 @@ import { getProducts, getCategories } from "@/sanity/queries";
 import ProductCard from "@/components/ProductCard";
 import Link from "next/link";
 
+export const revalidate = 30;
+
 export const metadata = {
   title: "All Products - TEG Equipment",
   description: "Browse our complete inventory of refurbished biomedical equipment, lab parts, and industrial machinery.",

@@ -3,6 +3,9 @@ import ProductCard from "@/components/ProductCard";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+export const revalidate = 30;
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   try {
     const categories = await getCategories();

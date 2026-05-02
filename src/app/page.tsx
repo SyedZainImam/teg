@@ -3,6 +3,8 @@ import { getCategories, getFeaturedProducts } from "@/sanity/queries";
 import CategoryCard from "@/components/CategoryCard";
 import ProductCard from "@/components/ProductCard";
 
+export const revalidate = 30;
+
 export default async function Home() {
   let categories: any[] = [];
   let featuredProducts: any[] = [];

@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
+export const revalidate = 30;
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   try {
     const products = await getProducts();
