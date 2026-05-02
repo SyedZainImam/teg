@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getCategories, getFeaturedProducts } from "@/sanity/queries";
+import { getCategories, getFeaturedProducts, getSiteSettings } from "@/sanity/queries";
 import CategoryCard from "@/components/CategoryCard";
 import ProductCard from "@/components/ProductCard";
 
@@ -8,11 +8,15 @@ export const revalidate = 30;
 export default async function Home() {
   let categories: any[] = [];
   let featuredProducts: any[] = [];
+  let settings: any = null;
 
   try {
     categories = (await getCategories()) || [];
     featuredProducts = (await getFeaturedProducts()) || [];
+    settings = await getSiteSettings();
   } catch {}
+
+  const whatsappUrl = settings?.whatsappNumber ? `https://wa.me/${settings.whatsappNumber}` : "";
 
   return (
     <div>
@@ -147,7 +151,7 @@ export default async function Home() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/1234567890"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-md transition-colors"

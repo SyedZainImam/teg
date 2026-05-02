@@ -18,7 +18,8 @@ const bottomLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-export default function Header({ categories = [] }: { categories?: Category[] }) {
+export default function Header({ categories = [], whatsapp = "" }: { categories?: Category[]; whatsapp?: string }) {
+  const whatsappUrl = whatsapp ? `https://wa.me/${whatsapp}` : "";
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
@@ -56,7 +57,7 @@ export default function Header({ categories = [] }: { categories?: Category[] })
 
           {/* WhatsApp CTA */}
           <a
-            href="https://wa.me/1234567890"
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:flex items-center gap-2 bg-green-600 hover:bg-green-700 px-4 py-2 rounded-md text-sm font-medium transition-colors"
@@ -98,7 +99,7 @@ export default function Header({ categories = [] }: { categories?: Category[] })
               </Link>
             ))}
             <a
-              href="https://wa.me/1234567890"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 bg-green-600 hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium mt-2"

@@ -1,6 +1,20 @@
 import Link from "next/link";
 
-export default function Footer() {
+interface Category {
+  title: string;
+  slug: { current: string };
+}
+
+interface FooterProps {
+  categories?: Category[];
+  whatsapp?: string;
+  email?: string;
+  location?: string;
+}
+
+export default function Footer({ categories = [], whatsapp = "", email = "", location = "" }: FooterProps) {
+  const whatsappUrl = whatsapp ? `https://wa.me/${whatsapp}` : "";
+
   return (
     <footer className="bg-primary text-white mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -19,21 +33,16 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Categories</h4>
             <ul className="space-y-2 text-sm text-white/70">
-              <li>
-                <Link href="/categories/biomedical" className="hover:text-white transition-colors">
-                  Biomedical Equipment
-                </Link>
-              </li>
-              <li>
-                <Link href="/categories/lab-parts" className="hover:text-white transition-colors">
-                  Lab Parts &amp; Supplies
-                </Link>
-              </li>
-              <li>
-                <Link href="/categories/utilities-machinery" className="hover:text-white transition-colors">
-                  Utilities Machinery
-                </Link>
-              </li>
+              {categories.map((cat) => (
+                <li key={cat.slug.current}>
+                  <Link
+                    href={`/categories/${cat.slug.current}`}
+                    className="hover:text-white transition-colors"
+                  >
+                    {cat.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -41,16 +50,23 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-2 text-sm text-white/70">
-              <li>
-                <a href="mailto:info@tegequipment.com" className="hover:text-white transition-colors">
-                  info@tegequipment.com
-                </a>
-              </li>
-              <li>
-                <a href="https://wa.me/1234567890" className="hover:text-white transition-colors">
-                  WhatsApp
-                </a>
-              </li>
+              {email && (
+                <li>
+                  <a href={`mailto:${email}`} className="hover:text-white transition-colors">
+                    {email}
+                  </a>
+                </li>
+              )}
+              {whatsappUrl && (
+                <li>
+                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                    WhatsApp
+                  </a>
+                </li>
+              )}
+              {location && (
+                <li>{location}</li>
+              )}
             </ul>
           </div>
         </div>

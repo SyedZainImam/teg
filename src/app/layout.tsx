@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { getCategories } from "@/sanity/queries";
+import { getCategories, getSiteSettings } from "@/sanity/queries";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,9 +29,15 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   let categories: any[] = [];
+  let settings: any = null;
   try {
     categories = (await getCategories()) || [];
+    settings = await getSiteSettings();
   } catch {}
+
+  const whatsapp = settings?.whatsappNumber || "";
+  const email = settings?.email || "";
+  const location = settings?.location || "";
 
   return (
     <html
@@ -39,9 +45,9 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Header categories={categories} />
+        <Header categories={categories} whatsapp={whatsapp} />
         <main className="flex-1">{children}</main>
-        <Footer />
+        <Footer categories={categories} whatsapp={whatsapp} email={email} location={location} />
       </body>
     </html>
   );

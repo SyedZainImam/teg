@@ -1,5 +1,14 @@
 import { client, isSanityConfigured } from "./client";
 
+export async function getSiteSettings() {
+  if (!isSanityConfigured) return null;
+  return client.fetch(`*[_type == "siteSettings"][0] {
+    whatsappNumber,
+    email,
+    location
+  }`);
+}
+
 export async function getCategories() {
   if (!isSanityConfigured) return [];
   return client.fetch(`*[_type == "category"] | order(title asc) {

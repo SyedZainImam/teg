@@ -1,4 +1,4 @@
-import { getProductBySlug, getProducts } from "@/sanity/queries";
+import { getProductBySlug, getProducts, getSiteSettings } from "@/sanity/queries";
 import { urlFor } from "@/sanity/image";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -40,14 +40,18 @@ const conditionLabel: Record<string, string> = {
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   let product: any = null;
+  let settings: any = null;
 
   try {
     product = await getProductBySlug(slug);
+    settings = await getSiteSettings();
   } catch {
     notFound();
   }
 
   if (!product) notFound();
+
+  const whatsappUrl = settings?.whatsappNumber ? `https://wa.me/${settings.whatsappNumber}` : "";
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -222,7 +226,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           {/* CTA */}
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <a
-              href="https://wa.me/1234567890"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-md transition-colors"
