@@ -3,18 +3,32 @@
 import Link from "next/link";
 import { useState } from "react";
 
-const navLinks = [
+interface Category {
+  title: string;
+  slug: { current: string };
+}
+
+const staticLinks = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
-  { href: "/categories/biomedical", label: "Biomedical" },
-  { href: "/categories/lab-parts", label: "Lab Parts" },
-  { href: "/categories/utilities-machinery", label: "Utilities Machinery" },
+];
+
+const bottomLinks = [
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
-export default function Header() {
+export default function Header({ categories = [] }: { categories?: Category[] }) {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navLinks = [
+    ...staticLinks,
+    ...categories.map((cat) => ({
+      href: `/categories/${cat.slug.current}`,
+      label: cat.title,
+    })),
+    ...bottomLinks,
+  ];
 
   return (
     <header className="bg-primary text-white sticky top-0 z-50 shadow-lg">
