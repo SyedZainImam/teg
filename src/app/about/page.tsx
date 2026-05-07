@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "About - TEG Equipment",
-  description: "Learn about Technical Equipment Group - your trusted partner for refurbished medical, lab, and industrial equipment.",
+  description: "Learn about Titan Equipment Global Inc. - your trusted partner for refurbished medical, lab, and industrial equipment.",
 };
 
 export default function AboutPage() {
@@ -13,7 +13,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold">About TEG</h1>
           <p className="mt-4 text-white/70 max-w-2xl text-lg">
-            Technical Equipment Group specializes in sourcing, testing, and
+            Titan Equipment Global Inc. specializes in sourcing, testing, and
             exporting quality refurbished equipment to markets worldwide.
           </p>
         </div>

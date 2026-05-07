@@ -38,7 +38,7 @@ export default function Header({ categories = [], whatsapp = "" }: { categories?
           <Link href="/" className="flex items-center gap-2">
             <span className="text-2xl font-bold tracking-tight">TEG</span>
             <span className="hidden sm:block text-sm text-white/70">
-              Technical Equipment Group
+              Titan Equipment Global Inc.
             </span>
           </Link>
 

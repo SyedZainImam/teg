@@ -23,7 +23,7 @@ export default function Footer({ categories = [], whatsapp = "", email = "", loc
           <div>
             <h3 className="text-xl font-bold mb-4">TEG</h3>
             <p className="text-white/70 text-sm leading-relaxed">
-              Technical Equipment Group - Your trusted source for quality
+              Titan Equipment Global Inc. - Your trusted source for quality
               refurbished biomedical equipment, laboratory parts, and industrial
               machinery.
             </p>
@@ -72,7 +72,7 @@ export default function Footer({ categories = [], whatsapp = "", email = "", loc
         </div>
 
         <div className="border-t border-white/10 mt-8 pt-8 text-center text-sm text-white/50">
-          &copy; {new Date().getFullYear()} TEG - Technical Equipment Group. All
+          &copy; {new Date().getFullYear()} TEG - Titan Equipment Global Inc. All
           rights reserved.
         </div>
       </div>

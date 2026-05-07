@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 export const revalidate = 30;
 
 export const metadata: Metadata = {
-  title: "TEG - Technical Equipment Group",
+  title: "TEG - Titan Equipment Global Inc.",
   description:
     "Quality refurbished biomedical equipment, laboratory parts, and industrial machinery. Trusted supplier of used medical devices, HPLC parts, air compressors, and diesel generators.",
 };
