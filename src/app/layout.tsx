@@ -37,7 +37,8 @@ export default async function RootLayout({
   } catch {}
 
   const whatsapp = settings?.whatsappNumber || "";
-  const whatsapp2 = settings?.whatsappNumber2 || "";
+  const phone1 = settings?.phoneNumber || "";
+  const phone2 = settings?.phoneNumber2 || "";
   const email = settings?.email || "";
   const location = settings?.location || "";
 
@@ -47,9 +48,9 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Header categories={categories} whatsapp={whatsapp} whatsapp2={whatsapp2} />
+        <Header categories={categories} whatsapp={whatsapp} />
         <main className="flex-1">{children}</main>
-        <Footer categories={categories} whatsapp={whatsapp} whatsapp2={whatsapp2} email={email} location={location} />
+        <Footer categories={categories} whatsapp={whatsapp} phone1={phone1} phone2={phone2} email={email} location={location} />
         <FloatingWhatsApp whatsapp={whatsapp} />
       </body>
     </html>

@@ -4,7 +4,8 @@ export async function getSiteSettings() {
   if (!isSanityConfigured) return null;
   return client.fetch(`*[_type == "siteSettings"][0] {
     whatsappNumber,
-    whatsappNumber2,
+    phoneNumber,
+    phoneNumber2,
     email,
     location
   }`);

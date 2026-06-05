@@ -7,16 +7,22 @@ export const siteSettings = defineType({
   fields: [
     defineField({
       name: "whatsappNumber",
-      title: "WhatsApp Number (Primary)",
+      title: "WhatsApp Number",
       type: "string",
-      description: "Include country code, e.g. 923001234567 (no + or spaces)",
+      description: "Include country code without +, e.g. 19058080705",
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "whatsappNumber2",
-      title: "WhatsApp Number (Secondary)",
+      name: "phoneNumber",
+      title: "Contact Phone Number 1",
       type: "string",
-      description: "Optional second number. Include country code, e.g. 923007654321 (no + or spaces)",
+      description: "e.g. +1 905 808 0705",
+    }),
+    defineField({
+      name: "phoneNumber2",
+      title: "Contact Phone Number 2",
+      type: "string",
+      description: "e.g. +1 226 821 5534",
     }),
     defineField({
       name: "email",
