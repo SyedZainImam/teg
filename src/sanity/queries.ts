@@ -7,7 +7,11 @@ export async function getSiteSettings() {
     phoneNumber,
     phoneNumber2,
     email,
-    location
+    location,
+    heroImages[] {
+      image,
+      alt
+    }
   }`);
 }
 

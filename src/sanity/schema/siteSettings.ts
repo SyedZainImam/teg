@@ -25,6 +25,27 @@ export const siteSettings = defineType({
       description: "e.g. +1 226 821 5534",
     }),
     defineField({
+      name: "heroImages",
+      title: "Hero Slideshow Images",
+      type: "array",
+      description: "Images rotate automatically on the homepage hero. Add 3–6 for best effect.",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({ name: "image", title: "Image", type: "image", options: { hotspot: true } }),
+            defineField({ name: "alt", title: "Alt Text", type: "string" }),
+          ],
+          preview: {
+            select: { media: "image", title: "alt" },
+            prepare({ media, title }: { media: any; title: string }) {
+              return { media, title: title || "Hero image" };
+            },
+          },
+        },
+      ],
+    }),
+    defineField({
       name: "email",
       title: "Contact Email",
       type: "string",

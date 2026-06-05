@@ -2,6 +2,8 @@ import Link from "next/link";
 import { getCategories, getFeaturedProducts, getSiteSettings } from "@/sanity/queries";
 import CategoryCard from "@/components/CategoryCard";
 import ProductCard from "@/components/ProductCard";
+import HeroCarousel from "@/components/HeroCarousel";
+import { urlFor } from "@/sanity/image";
 
 export const revalidate = 30;
 
@@ -18,38 +20,16 @@ export default async function Home() {
 
   const whatsappUrl = settings?.whatsappNumber ? `https://wa.me/${settings.whatsappNumber}` : "";
 
+  const heroImages = (settings?.heroImages || []).map((item: any) => ({
+    image: item.image,
+    alt: item.alt || "",
+    url: item.image ? urlFor(item.image).width(1600).height(700).url() : "",
+  })).filter((item: any) => item.url);
+
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary to-primary-light text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Quality Equipment,
-              <br />
-              <span className="text-white/80">Trusted Worldwide</span>
-            </h1>
-            <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl">
-              Refurbished biomedical devices, laboratory parts, and industrial
-              machinery — sourced, tested, and delivered with confidence.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/products"
-                className="inline-flex items-center justify-center bg-accent hover:bg-red-700 text-white font-semibold px-8 py-3 rounded-md transition-colors"
-              >
-                Browse Equipment
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-md transition-colors"
-              >
-                Request a Quote
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroCarousel images={heroImages} whatsappUrl={whatsappUrl} />
 
       {/* Categories Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
