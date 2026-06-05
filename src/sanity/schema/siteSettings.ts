@@ -38,8 +38,8 @@ export const siteSettings = defineType({
           ],
           preview: {
             select: { media: "image", title: "alt" },
-            prepare({ media, title }: { media: any; title: string }) {
-              return { media, title: title || "Hero image" };
+            prepare({ media, title }) {
+              return { media, title: (title as string) || "Hero image" };
             },
           },
         },
