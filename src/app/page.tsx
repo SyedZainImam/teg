@@ -141,6 +141,64 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* How It Works Section */}
+      <section className="bg-muted py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground">How It Works</h2>
+            <p className="mt-3 text-gray-500 max-w-2xl mx-auto">
+              Getting equipment from TEG is simple. Here&apos;s our straightforward process from inquiry to delivery.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+            {[
+              {
+                step: "01",
+                title: "Inquiry",
+                desc: "Tell us what equipment you need via WhatsApp or our contact form. We respond within 24 hours.",
+                icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
+              },
+              {
+                step: "02",
+                title: "Quotation",
+                desc: "We send a detailed quote including equipment condition report, freight estimate, and documentation costs.",
+                icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+              },
+              {
+                step: "03",
+                title: "Payment",
+                desc: "Secure international wire transfer or LC. We confirm payment and begin preparing your shipment.",
+                icon: "M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z",
+              },
+              {
+                step: "04",
+                title: "Delivery",
+                desc: "We handle export documentation, customs clearance, and freight — delivered to your door worldwide.",
+                icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
+              },
+            ].map((item, i) => (
+              <div key={item.step} className="relative text-center">
+                {i < 3 && (
+                  <div className="hidden lg:block absolute top-7 left-[calc(50%+2.5rem)] w-[calc(100%-5rem)] h-0.5 bg-primary/20" />
+                )}
+                <div className="relative inline-flex">
+                  <div className="w-14 h-14 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} />
+                    </svg>
+                  </div>
+                  <span className="absolute -top-1 -right-1 bg-accent text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center leading-none">
+                    {i + 1}
+                  </span>
+                </div>
+                <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
+                <p className="text-gray-500 text-sm mt-2">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="bg-primary text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

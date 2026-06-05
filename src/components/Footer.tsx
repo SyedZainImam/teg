@@ -8,12 +8,14 @@ interface Category {
 interface FooterProps {
   categories?: Category[];
   whatsapp?: string;
+  whatsapp2?: string;
   email?: string;
   location?: string;
 }
 
-export default function Footer({ categories = [], whatsapp = "", email = "", location = "" }: FooterProps) {
+export default function Footer({ categories = [], whatsapp = "", whatsapp2 = "", email = "", location = "" }: FooterProps) {
   const whatsappUrl = whatsapp ? `https://wa.me/${whatsapp}` : "";
+  const whatsappUrl2 = whatsapp2 ? `https://wa.me/${whatsapp2}` : "";
 
   return (
     <footer className="bg-primary text-white mt-auto">
@@ -60,7 +62,14 @@ export default function Footer({ categories = [], whatsapp = "", email = "", loc
               {whatsappUrl && (
                 <li>
                   <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                    WhatsApp
+                    WhatsApp: +{whatsapp}
+                  </a>
+                </li>
+              )}
+              {whatsappUrl2 && (
+                <li>
+                  <a href={whatsappUrl2} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                    WhatsApp: +{whatsapp2}
                   </a>
                 </li>
               )}

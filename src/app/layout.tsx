@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { getCategories, getSiteSettings } from "@/sanity/queries";
 
 const geistSans = Geist({
@@ -36,6 +37,7 @@ export default async function RootLayout({
   } catch {}
 
   const whatsapp = settings?.whatsappNumber || "";
+  const whatsapp2 = settings?.whatsappNumber2 || "";
   const email = settings?.email || "";
   const location = settings?.location || "";
 
@@ -45,9 +47,10 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Header categories={categories} whatsapp={whatsapp} />
+        <Header categories={categories} whatsapp={whatsapp} whatsapp2={whatsapp2} />
         <main className="flex-1">{children}</main>
-        <Footer categories={categories} whatsapp={whatsapp} email={email} location={location} />
+        <Footer categories={categories} whatsapp={whatsapp} whatsapp2={whatsapp2} email={email} location={location} />
+        <FloatingWhatsApp whatsapp={whatsapp} />
       </body>
     </html>
   );
